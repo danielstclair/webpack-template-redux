@@ -1,5 +1,17 @@
 import '../styles/main.scss';
-import '../../index.html';
 
-console.log(`it's working with es6 and stuff`);
-// console.log(sugar);
+// boilerplate imports
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import ReduxPromise from 'redux-promise';
+
+import App from './components/app';
+import reducers from './reducers';
+
+const createStoreWithMiddleare = applyMiddleware(ReduxPromise)(createStore);
+
+// Must refactor once using redux
+
+ReactDOM.render(<App />, document.querySelector('.container'));
