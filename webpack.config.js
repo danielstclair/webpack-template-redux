@@ -29,6 +29,11 @@ var common = {
       test: /\.js[x]?$/,
       loaders: ['babel'],
       exclude: /(node_modules|bower_components)/
+    },
+    {
+      test: /\.js$/, 
+      loader: "eslint-loader", 
+      exclude: /node_modules/
     }, 
     {
       test: /\.html$/,
@@ -50,6 +55,9 @@ var common = {
       test: /\.(eot|ttf|svg|gif|png)$/,
       loader: "file-loader"
     }]
+  },
+  eslint:{
+    configFile: './.eslintrc'
   },
   plugins: [
     new ExtractTextPlugin("css/[name].css", {allChunks: true})
