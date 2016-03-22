@@ -20,6 +20,7 @@ var common = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
+    path: __dirname,
     filename: 'scripts/[name].bundle.js',
     sourceMapFilename: '[file].map'
   },
@@ -59,6 +60,10 @@ var common = {
   eslint:{
     configFile: './.eslintrc'
   },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
+  },
   plugins: [
     new ExtractTextPlugin("css/[name].css", {allChunks: true})
   ],
@@ -71,12 +76,6 @@ var common = {
 
 if (TARGET === 'dev' || !TARGET) {
   module.exports = merge(common, {
-    devServer: {
-      historyApiFallback: true
-    },
-    output: {
-      publicPath: '/assets'
-    },
     plugins: [
       new NpmInstallPlugin({
         save: true // --save
