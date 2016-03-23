@@ -12,6 +12,8 @@ import reducers from './reducers';
 
 const createStoreWithMiddleare = applyMiddleware(ReduxPromise)(createStore);
 
-// Must refactor once using redux
-
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleare(reducers)}>
+    <App />
+  </Provider>
+  , document.querySelector('.container'));
